@@ -4,7 +4,7 @@ HdrHistogram.NET
 A .NET port of https://github.com/HdrHistogram/HdrHistogram
 
 ##### Code ported so far
-* All Histogram types (default, short, long)
+* All Histogram types - long (default), int, short
 * Iterators (using IEnumerable instead of Java iterators)
 * All functional and performance tests
 * Code is (delibrately) a line-by-line port, so it's *NOT* idomatic .NET code
