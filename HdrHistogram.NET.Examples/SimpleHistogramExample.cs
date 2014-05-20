@@ -29,15 +29,12 @@ namespace HdrHistogram.NET.Examples
 
         static long WARMUP_TIME_MSEC = 5000;
         static long RUN_TIME_MSEC = 20000;
-        //static long WARMUP_TIME_MSEC = 1000;
-        //static long RUN_TIME_MSEC = 5000;
 
         static void recordTimeToCreateAndCloseDatagramSocket() 
         {
             var hostIPAddress = Dns.GetHostEntry("google.com").AddressList[0];
             var hostIPEndPoint = new IPEndPoint(hostIPAddress, 80);
 
-            //long startTime = System.nanoTime();
             var timer = Stopwatch.StartNew();
             try 
             {
@@ -50,37 +47,29 @@ namespace HdrHistogram.NET.Examples
             {
                 socket.Close();
             }
-            //long endTime = System.nanoTime();
+            timer.Stop();
+
+            // From http://stackoverflow.com/questions/2329079/how-do-you-convert-stopwatch-ticks-to-nanoseconds-milliseconds-and-seconds/2329103#2329103
             //histogram.recordValue(endTime - startTime);
             // 1 msecs = 1000000 (1,000,000) ns (or nanos)
             // 1 msecs = 1000 (1,000) usec (or microseconds)
             // 1 usec = 1000 ns (nanos)
-            Thread.Sleep(5);
-            timer.Stop();
-            // From http://stackoverflow.com/questions/2329079/how-do-you-convert-stopwatch-ticks-to-nanoseconds-milliseconds-and-seconds/2329103#2329103
             long elapsedNanos = (long)(((double)timer.ElapsedTicks / Stopwatch.Frequency) * 1000000000);
             histogram.recordValue(elapsedNanos);
         }
 
         public static void Run()
         {
-            //long startTime = System.currentTimeMillis();
-            //long now;
             var timer = Stopwatch.StartNew();
 
             do {
                 recordTimeToCreateAndCloseDatagramSocket();
-                //now = System.currentTimeMillis();
-                //now = timer.ElapsedMilliseconds;
-            //} while (now - startTime < WARMUP_TIME_MSEC);
             } while (timer.ElapsedMilliseconds < WARMUP_TIME_MSEC);
 
             histogram.reset();
 
             do {
                 recordTimeToCreateAndCloseDatagramSocket();
-                //now = System.currentTimeMillis();
-            //} while (now - startTime < RUN_TIME_MSEC);
             } while (timer.ElapsedMilliseconds < RUN_TIME_MSEC);
 
             Console.WriteLine("Recorded latencies [in usec] for Create+Close of a DatagramSocket:");
