@@ -11,3 +11,5 @@ A .NET port of https://github.com/HdrHistogram/HdrHistogram
 
 ##### Still to do
 * Serialisation/deserialisaion code
+* Any new commits from https://github.com/HdrHistogram/HdrHistogram/commits/master
+* Produce sample .xls file
