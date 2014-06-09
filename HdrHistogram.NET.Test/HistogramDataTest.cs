@@ -20,7 +20,6 @@ namespace HdrHistogram.NET.Test
     /**
      * JUnit test for {@link HistogramData}
      */
-    [Category("Regular")]
     public class HistogramDataTest 
     {
         static /*final*/ long highestTrackableValue = 3600L * 1000 * 1000; // 1 hour in usec units
