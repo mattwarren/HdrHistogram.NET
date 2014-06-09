@@ -28,8 +28,9 @@ namespace HdrHistogram.NET.Test
             var valueAsText = Convert.ToString(value, 2);
             if (valueAsText.All(c => c == '0')) 
                 valueAsText = string.Empty;
-            Console.WriteLine("Value: {0} - \"{1}\", length = {2}", value, valueAsText, valueAsText.Length);
-            return 64 - valueAsText.Length;
+            var leadingZeros = 64 - valueAsText.Length;
+            //Console.WriteLine("Value: {0} - \"{1}\", leading zeros = {2} length = {3}", value, valueAsText, leadingZeros, valueAsText.Length);
+            return leadingZeros;
         }
     }
 }
