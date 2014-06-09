@@ -401,6 +401,7 @@ namespace HdrHistogram.NET.Test
             histogram.getHistogramData().outputPercentileDistribution(Console.Out, 5, 100.0);
             Console.WriteLine("\nHistogram percentile output should be in CSV format and show overflow:");
             histogram.getHistogramData().outputPercentileDistribution(Console.Out, 5, 100.0, true);
+            Console.WriteLine("");
         }
 
         [Test]
