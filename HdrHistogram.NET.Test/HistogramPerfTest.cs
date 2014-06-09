@@ -20,7 +20,7 @@ namespace HdrHistogram.NET.Test
     /**
      * JUnit test for {@link Histogram}
      */
-    [Category("Performance (Long Running)")]
+    [Category("Performance")]
     public class HistogramPerfTest 
     {
         /// <summary> 3,600,000,000 (3600L * 1000 * 1000, e.g. for 1 hr in usec units) </summary>
