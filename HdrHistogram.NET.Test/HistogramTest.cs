@@ -15,7 +15,6 @@ using Assert = HdrHistogram.NET.Test.AssertEx;
 
 namespace HdrHistogram.NET.Test
 {
-    [Category("Regular")]
     public class HistogramTest
     {
         static long highestTrackableValue = 3600L * 1000 * 1000; // e.g. for 1 hr in usec units
